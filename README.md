@@ -59,16 +59,13 @@ USER django-user
 
 ``` python
 # Git
-
 .git
 .gitignore
 
 # Docker
-
 .docker
 
 # Python
-
 app/**pycache**/
 app/_/**pycache**/
 app/_/_/**pycache**/
@@ -104,29 +101,28 @@ services:
 
 > Run command: `docker-compose build`
 > Configure flake8: create `requirements.dev.txt`
-> `flake8>=4.0.1,<4.1`
+  `flake8>=4.0.1,<4.1`
 
 > Create `.flake8` in app folder: `ex: app/.flake8`
-> `
-> [flake8]
-
-    exclude =
-    migrations,
-    **pycache**,
-    manage.py,
-    settings.py
-    `
+`
+[flake8]
+exclude =
+  migrations,
+  __pycache__,
+  manage.py,
+  settings.py
+`
 
 > Update docker and add `flake8` to docker:
-> `docker-compose run --rm app sh -c "flake8"`
+  `docker-compose run --rm app sh -c "flake8"`
 
 #### Step 7: Install Django Project and Run
 
 > Create Django project:
-> `docker-compose run --rm app sh -c "django-admin startproject app ."`
+  `docker-compose run --rm app sh -c "django-admin startproject app ."`
 
 > To run project in localhost: `docker-compose up`
-> `Server: http://127.0.0.1:8000/`
+  `Server: http://127.0.0.1:8000/`
 
 
 ## GitHub Action:
