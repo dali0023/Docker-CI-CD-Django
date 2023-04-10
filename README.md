@@ -6,12 +6,15 @@
 
 `git clone https://github.com/dali0023/recipe-app-api.git`
 
-Go to `Docker Desktop>Account Settings>Security:` > Click New Access Token>Give project name. > Go to Github Repo(recipe-app-api)>settings>secrets and variables> Actions: > Go to Click New Repository Secret, then create two:
-`Name: DOCKERHUB_USER, Secret: dali0023(username)
-    Again, Name: DOCKERHUB_TOKEN, Secret: GET FROM DOCKER NEW ACCESS TOKEN CODE`
+Go to `Docker Desktop>Account Settings>Security:` 
+> Click New Access Token>Give project name. 
+> Go to Github Repo(recipe-app-api)>settings>secrets and variables> Actions: 
+
+> Go to Click New Repository Secret, then create two:
+  `Name: DOCKERHUB_USER, Secret: dali0023(username)
+   Again, Name: DOCKERHUB_TOKEN, Secret: GET FROM DOCKER NEW ACCESS TOKEN CODE`
 
 #### Step-2: Django/Django Rest Framework
-
 Create requirements.txt file on root file:
 
 ```python
