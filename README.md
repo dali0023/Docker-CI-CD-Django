@@ -57,8 +57,7 @@ USER django-user
 
 #### Step-4: Create a file called `.dockerignore` in root
 
-`
-
+``` python
 # Git
 
 .git
@@ -77,7 +76,7 @@ app/_/_/_/**pycache**/
 .env/
 .venv/
 venv/
-`
+```
 
 #### Step-5:
 
