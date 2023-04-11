@@ -1,4 +1,9 @@
 ## Project Set up:
+Quick Review:
+* `Image`: the "definition" of your project
+* `Container`: what your project actually runs in (an instance of the image)
+* `Dockerfile`: defines what your image looks like
+* `docker-compose.yml`: a YAML file that takes the Dockerfile and adds additional instructions for how our Docker container should behave in production.
 
 #### Step-1: Create Github Repo and clone is on computer:
 
