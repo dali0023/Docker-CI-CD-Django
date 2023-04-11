@@ -24,8 +24,8 @@ Add below code to `docker-compose.yml`:
       - POSTGRES_PASSWORD=changeme
 
 volumes:
-  dev-db-data:``
-`
+  dev-db-data:
+```
 
 * run: `docker-composer up`
 
