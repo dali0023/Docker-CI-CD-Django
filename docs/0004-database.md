@@ -30,6 +30,12 @@ volumes:
 
 
 ## Database configuration with Django
+Few Steps:update
+* Step-1: `Dockerfile`- add few packages
+* Step-2: `requirments.txt`
+* Step-3: `settings.py`
+
+#### Step-1:
 `Psycopg 3:` it is a newly designed PostgreSQL database adapter for the Python.
 Few package are required for python alpine:
     * postgresql-clint
@@ -37,29 +43,37 @@ Few package are required for python alpine:
     * postgresql-dev
     * must-dev
 
-* update Dockerfile by adding few packages on red color- 
+* update Dockerfile by adding few packages- 
   Dockerfile:
-`
+```python
 ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
-   $${\color{red}apk add --update --no-cache postgresql-client && \}$$ 
-   $${\color{red}apk add --update --no-cache --virtual .tmp-build-deps \}$$ 
-   $${\color{red}build-base postgresql-dev musl-dev && \}$$     
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
-    $${\color{red}apk del .tmp-build-deps && \}$$
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
-`
+```
 
+* also add `Psycopg` to `requirments.txt` file:
+```python
+< Django>=3.2.4,<3.3
+< djangorestframework>=3.12.4,<3.13
+psycopg2>=2.8.6,<2.9
+```
+* to clear our containers run:
+    `docker-compose down`
 
-
-
+* to rebuild our container:
+  `docker-compose build`
 
 
 
