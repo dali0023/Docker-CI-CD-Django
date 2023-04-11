@@ -7,3 +7,4 @@
 4. [Configuring Database](./docs/0004-database.md)
 
 
+$${\color{red}Red}$$

@@ -37,16 +37,27 @@ Few package are required for python alpine:
     * postgresql-dev
     * must-dev
 
-* update Dockerfile by adding few packages- 
+* update Dockerfile by adding few packages on red color- 
   Dockerfile:
 `
- apk add --update --no-cache postgresql-client && \
-    apk add --update --no-cache --virtual .tmp-build-deps \
-        build-base postgresql-dev musl-dev && \
+ARG DEV=false
+RUN python -m venv /py && \
+    /py/bin/pip install --upgrade pip && \
+   $${\color{red}apk add --update --no-cache postgresql-client && \}$$ 
+   $${\color{red}apk add --update --no-cache --virtual .tmp-build-deps \}$$ 
+   $${\color{red}build-base postgresql-dev musl-dev && \}$$     
     /py/bin/pip install -r /tmp/requirements.txt && \
+    if [ $DEV = "true" ]; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+    fi && \
+    rm -rf /tmp && \
+    $${\color{red}apk del .tmp-build-deps && \}$$
+    adduser \
+        --disabled-password \
+        --no-create-home \
 `
 
-$${\color{red}Red}$$
+
 
 
 
