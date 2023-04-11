@@ -62,7 +62,7 @@ RUN python -m venv /py && \
     adduser \
 ```
 
-#### Step-2: add `Psycopg` to `requirments.txt`
+#### Step-2: $${\color{red}add `Psycopg` to `requirments.txt`}$$
 ```python
 psycopg2>=2.8.6,<2.9
 ```
@@ -73,7 +73,7 @@ psycopg2>=2.8.6,<2.9
   `docker-compose build`
 
 
-#### Step 3: Configure `settings.py`
+#### $${\color{red}Step 3: Configure `settings.py`}$$
 ```python
 # add `import os` on the top:
 import os
@@ -90,7 +90,7 @@ DATABASES = {
 ###### Example:
 ![Example](./../img/database.png)
 
-
+* $${\color{red}remove `db.sqlite3` from project's app folder.}$$
 
 
 
