@@ -45,7 +45,8 @@ Few package are required for python alpine:
         build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
 `
-<span style="color:blue">some *blue* text</span>.
+
+$${\color{red}Red}$$
 
 
 
