@@ -59,14 +59,10 @@ RUN python -m venv /py && \
     rm -rf /tmp && \
     apk del .tmp-build-deps && \
     adduser \
-        --disabled-password \
-        --no-create-home \
 ```
 
-* also add `Psycopg` to `requirments.txt` file:
+#### Step-2: add `Psycopg` to `requirments.txt`
 ```python
-< Django>=3.2.4,<3.3
-< djangorestframework>=3.12.4,<3.13
 psycopg2>=2.8.6,<2.9
 ```
 * to clear our containers run:
@@ -74,6 +70,25 @@ psycopg2>=2.8.6,<2.9
 
 * to rebuild our container:
   `docker-compose build`
+
+
+#### Step 3: Configure `settings.py`
+```python
+# add `import os` on the top:
+import os
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
+    }
+}
+```
+
+![Example](./../img/database.png)
+
 
 
 
