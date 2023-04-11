@@ -2,6 +2,7 @@
 ## Add database service:
 Add below code to `docker-compose.yml`:
 `
+
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
     
@@ -86,7 +87,7 @@ DATABASES = {
     }
 }
 ```
-
+###### Example:
 ![Example](./../img/database.png)
 
 
