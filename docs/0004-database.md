@@ -192,3 +192,10 @@ class CommandTests(SimpleTestCase):
    * `docker-compose run --rm app sh -c "python manage.py test"`
    * `docker-compose run --rm app sh -c "python manage.py wait_for_db"`
    * `docker-compose run --rm app sh -c "python manage.py test & flake8"`
+
+
+######################################################################################################
+
+#### Database Migrations
+Using the ORM:
+![Example](./../img/orm.png)
