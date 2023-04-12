@@ -184,3 +184,9 @@ class Migration(migrations.Migration):
         ),
     ]
 ```
+
+##### Final Step:
+ * run server: `docker-compose up`
+ * create super user or admin: `docker-compose run --rm app sh -c "python manage.py createsuperuser"`
+ * asking for email and pass on the terminal, provide it.
+ * visit : `127.0.0.1:8000/` and `127.0.0.1:8000/admin` and log in to the dashboard
