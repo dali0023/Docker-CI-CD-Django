@@ -42,12 +42,12 @@ Few Steps:update
 
 `Psycopg 3:` it is a newly designed PostgreSQL database adapter for the Python.
 Few package are required for python alpine:
-_ postgresql-clint
-_ build base
-_ postgresql-dev
-_ must-dev
+  * postgresql-clint
+  * build base
+  * postgresql-dev
+  * must-dev
 
-Dockerfile:
+Add few lines to `Dockerfile:`
 
 ```python
 ARG DEV=false
@@ -215,7 +215,8 @@ Using the ORM:
 ![Example](./../img/orm.png)
 
 To work with migration, update `.github/workflows/checks.yml` and `docker-compose.yml`
-`.github/workflows/checks.yml`:
+
+Add below lines to `.github/workflows/checks.yml`:
 
 ```python
      uses: actions/checkout@v2
