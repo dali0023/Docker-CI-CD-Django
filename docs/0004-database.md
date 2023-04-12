@@ -1,11 +1,12 @@
-
 ## Add database service:
+
 Add below code to `docker-compose.yml`:
+
 ```python
 
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
-    
+
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
@@ -27,24 +28,27 @@ volumes:
   dev-db-data:
 ```
 
-* run: `docker-composer up`
-
+- run: `docker-composer up`
 
 ## Database configuration with Django
+
 Few Steps:update
-* Step-1: `Dockerfile`- add few packages
-* Step-2: `requirments.txt`
-* Step-3: `settings.py`
+
+- Step-1: `Dockerfile`- add few packages
+- Step-2: `requirments.txt`
+- Step-3: `settings.py`
 
 #### Step-1:
+
 `Psycopg 3:` it is a newly designed PostgreSQL database adapter for the Python.
 Few package are required for python alpine:
-    * postgresql-clint
-    * build base
-    * postgresql-dev
-    * must-dev
+_ postgresql-clint
+_ build base
+_ postgresql-dev
+_ must-dev
 
-  Dockerfile:
+Dockerfile:
+
 ```python
 ARG DEV=false
 RUN python -m venv /py && \
@@ -62,17 +66,19 @@ RUN python -m venv /py && \
 ```
 
 #### Step-2: add `Psycopg` to `requirments.txt`
+
 ```python
 psycopg2>=2.8.6,<2.9
 ```
-* to clear our containers run:
-    `docker-compose down`
 
-* to rebuild our container:
+- to clear our containers run:
+  `docker-compose down`
+
+- to rebuild our container:
   `docker-compose build`
 
-
 #### Step 3: Configure `settings.py`
+
 ```python
 # add `import os` on the top:
 import os
@@ -86,33 +92,40 @@ DATABASES = {
     }
 }
 ```
+
 ###### Example:
+
 ![Example](./../img/database.png)
 
-* remove `db.sqlite3` from project's app folder.
+- remove `db.sqlite3` from project's app folder.
 
 #### Create core app:
+
 Create a new app:
-``` docker-compose run --rm app sh -c "python manage.py startapp core" ```
+`docker-compose run --rm app sh -c "python manage.py startapp core"`
 
-* remove `tests.py` from core folder, then create a folder called `tests` then create tests related files:
-    * `__init__.py`
-    * tests files**
+- remove `tests.py` from core folder, then create a folder called `tests` then create tests related files:
 
-* go to `settings.py` and add core
+  - `__init__.py`
+  - tests files\*\*
+
+- go to `settings.py` and add core
+
 ```
 INSTALLED_APPS = [
     'core',
 ]
 ```
 
-
 ############################################################################################
+
 ### Write tests for wait_for_db command
-1) Create a file `core/management/commands/wait_for_db.py`
-2) Add `core/management/commands/__init__.py` in the folders management and commands.
+
+1. Create a file `core/management/commands/wait_for_db.py`
+2. Add `core/management/commands/__init__.py` in the folders management and commands.
 
 `wait_for_db.py:`
+
 ```python
 """
 Django command to wait for the database to be available.
@@ -144,7 +157,8 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Database available!'))
 ```
 
-3) Create a file `core/tests/test_commands.py`:
+3. Create a file `core/tests/test_commands.py`:
+
 ```python
 """
 Test custom Django management commands.
@@ -182,20 +196,56 @@ class CommandTests(SimpleTestCase):
         patched_check.assert_called_with(databases=['default'])
 ```
 
-4) update `app/core/admin.py`:
+4. update `app/core/admin.py`:
    `from django.contrib import admin  # noqa`
 
-5) update `app/core/models.py`:
+5. update `app/core/models.py`:
    `from django.db import models  # noqa`
 
-6) run few commeands:
-   * `docker-compose run --rm app sh -c "python manage.py test"`
-   * `docker-compose run --rm app sh -c "python manage.py wait_for_db"`
-   * `docker-compose run --rm app sh -c "python manage.py test & flake8"`
-
+6. run few commeands:
+   - `docker-compose run --rm app sh -c "python manage.py test"`
+   - `docker-compose run --rm app sh -c "python manage.py wait_for_db"`
+   - `docker-compose run --rm app sh -c "python manage.py test & flake8"`
 
 ######################################################################################################
 
 #### Database Migrations
+
 Using the ORM:
 ![Example](./../img/orm.png)
+
+To work with migration, update `.github/workflows/checks.yml` and `docker-compose.yml`
+`.github/workflows/checks.yml`:
+
+```python
+     uses: actions/checkout@v2
+      - name: Test
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
+      - name: Lint
+        run: docker-compose run --rm app sh -c "flake8"
+```
+
+`docker-compose.yml`:
+
+```python
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+```
+#### Run: 
+  * `docker-compose down`
+  * `docker-compose up`
+
+upload to git & check github action
+
+
+
