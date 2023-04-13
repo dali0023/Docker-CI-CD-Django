@@ -6,6 +6,7 @@
 3. [Test Driven Development(TDD)](./docs/0003-test-driven-development.md)
 4. [Configuring Database](./docs/0004-database.md)
 5. [Migrations](./docs/0005-user-model.md)
+6. [Admin/Dashboard](./docs/0006-admin-site.md)
 
 
 $${\color{red}Red}$$
