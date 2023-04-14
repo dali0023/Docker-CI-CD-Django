@@ -7,6 +7,7 @@
 4. [Configuring Database](./docs/0004-database.md)
 5. [Migrations](./docs/0005-user-model.md)
 6. [Admin/Dashboard](./docs/0006-admin-site.md)
+7. [API documentation/ Set Up](./docs/0001-api-documentation.md)
 
 
 $${\color{red}Red}$$
