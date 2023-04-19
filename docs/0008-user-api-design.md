@@ -84,16 +84,16 @@ class UserSerializer(serializers.ModelSerializer):
 - `Model Meta` is basically the inner class of your model class. it changes the behavior of your model fields like changing order options, name. It’s completely optional to add a Meta class to your model.
   [Model Meta Options](https://docs.djangoproject.com/en/4.2/ref/models/options/):
 
-      ```python
-      class student(models.Model):
-          class Meta:
-            abstract = True
-            verbose_name = "stu" # verbose_name is basically a human-readable name for your model
-            ordering = [-1] # change the order of your model fields.
-            permissions = [("can_deliver_pizzas", "Can deliver pizzas")] # Extra permissions to enter into the permissions table when creating this object. Add, change, delete and view permissions are automatically created for each model.
-            db_table = 'XYZ' # We can overwrite the table name by using db_table in meta class.
-            get_latest_by = "order_date" # It returns the latest object in the table based on the given field, used for typically DateField, DateTimeField, or IntegerField.
-      ```
+```python
+    class student(models.Model):
+        class Meta:
+        abstract = True
+        verbose_name = "stu"
+        ordering = [-1]
+        permissions = [("can_deliver_pizzas", "Can deliver pizzas")]
+        db_table = 'XYZ'
+        get_latest_by = "order_date"
+```
 
 ##### Step-4: Creating a viewset
 
