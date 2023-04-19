@@ -1,11 +1,14 @@
 # [API Documentation](https://drf-spectacular.readthedocs.io/en/latest/readme.html)
 
-- Learn API API Documentation
+- Learn API Documentation
 - Implemented Swaggar and OpenAPI Schema
 - Tested Documentation
 
 Django REST framework - DRF spectacular: `drf-spectacular` is a `OpenAPI 3` schema generation tool for Django REST framework.
-It Goals: - Extract as much schema information from DRF as possible. - Provide flexibility to make the schema usable in the real world - Generate a schema that works well with the most popular client generators.
+It Goals:
+- Extract as much schema information from DRF as possible.
+- Provide flexibility to make the schema usable in the real world
+- Generate a schema that works well with the most popular client generators.
 
 Install `drf-spectacular` to `requirements.txt`
 
