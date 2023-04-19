@@ -87,12 +87,12 @@ class UserSerializer(serializers.ModelSerializer):
       ```python
       class student(models.Model):
           class Meta:
-              abstract = True  # If `abstract = True`, this model will be an abstract  base class
-              verbose_name = "stu" # verbose_name is basically a human-readable name for your model
-              ordering = [-1] # change the order of your model fields.
-              permissions = [("can_deliver_pizzas", "Can deliver pizzas")] # Extra permissions to enter into the permissions table when creating this object. Add, change, delete and view permissions are automatically created for each model.
-              db_table = 'XYZ' # We can overwrite the table name by using db_table in meta class.
-              get_latest_by = "order_date" # It returns the latest object in the table based on the given field, used for typically DateField, DateTimeField, or IntegerField.
+            abstract = True
+            verbose_name = "stu" # verbose_name is basically a human-readable name for your model
+            ordering = [-1] # change the order of your model fields.
+            permissions = [("can_deliver_pizzas", "Can deliver pizzas")] # Extra permissions to enter into the permissions table when creating this object. Add, change, delete and view permissions are automatically created for each model.
+            db_table = 'XYZ' # We can overwrite the table name by using db_table in meta class.
+            get_latest_by = "order_date" # It returns the latest object in the table based on the given field, used for typically DateField, DateTimeField, or IntegerField.
       ```
 
 ##### Step-4: Creating a viewset
@@ -147,7 +147,7 @@ Final Steps to Run:
 
 - `docker-compose build`
 - `docker-compose up`
-- visit: `127.0.0.1:8000/api/docs` 
+- visit: `127.0.0.1:8000/api/docs`
 
 
 
