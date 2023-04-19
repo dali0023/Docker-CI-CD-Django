@@ -8,7 +8,7 @@
 5. [Migrations](./docs/0005-user-model.md)
 6. [Admin/Dashboard](./docs/0006-admin-site.md)
 7. [API documentation/ Set Up](./docs/0007-api-documentation.md)
-8. [Build User API](0008-user-api-design.md)
+8. [Build User API](./docs/0008-user-api-design.md)
 
 
 $${\color{red}Red}$$
