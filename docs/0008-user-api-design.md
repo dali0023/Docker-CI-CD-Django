@@ -87,12 +87,12 @@ class UserSerializer(serializers.ModelSerializer):
 ```python
     class student(models.Model):
         class Meta:
-        abstract = True
-        verbose_name = "stu"
-        ordering = [-1]
-        permissions = [("can_deliver_pizzas", "Can deliver pizzas")]
-        db_table = 'XYZ'
-        get_latest_by = "order_date"
+            abstract = True
+            verbose_name = "stu"
+            ordering = [-1]
+            permissions = [("can_deliver_pizzas", "Can deliver pizzas")]
+            db_table = 'XYZ'
+            get_latest_by = "order_date"
 ```
 
 ##### Step-4: Creating a viewset
