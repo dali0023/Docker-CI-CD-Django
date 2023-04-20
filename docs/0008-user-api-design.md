@@ -82,7 +82,8 @@ class UserSerializer(serializers.ModelSerializer):
 ```
 
 - `Model Meta` is basically the inner class of your model class. it changes the behavior of your model fields like changing order options, name. It’s completely optional to add a Meta class to your model.
-  [Model Meta Options](https://docs.djangoproject.com/en/4.2/ref/models/options/):
+
+[Model Meta Options](https://docs.djangoproject.com/en/4.2/ref/models/options/):
 
 ```python
     class student(models.Model):
@@ -143,13 +144,12 @@ urlpatterns = [
 ```
 
 ##### Step-6: Run server and check API:
+
 Final Steps to Run:
 
 - `docker-compose build`
 - `docker-compose up`
 - visit: `127.0.0.1:8000/api/docs`
-
-
 
 #### Step-1.1: Write tests for create user API
 
@@ -223,4 +223,3 @@ class PublicUserApiTests(TestCase):
         self.assertFalse(user_exists)
 ```
 
-### Step-3: Implement create user API
