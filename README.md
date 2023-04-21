@@ -9,6 +9,7 @@
 6. [Admin/Dashboard](./docs/0006-admin-site.md)
 7. [API documentation/ Set Up](./docs/0007-api-documentation.md)
 8. [Build User API](./docs/0008-user-api-design.md)
+9. [Build Authentication](./docs/0009-auth.md)
 
 
 $${\color{red}Red}$$
